@@ -358,7 +358,7 @@ def _scaffold_tests(root: Path, cfg: InitConfig) -> list[Path]:
     example = tests_dir / "test_example.py"
     example.write_text(TEST_EXAMPLE_TEMPLATE.format(init_module=_tests_init_module(root, cfg)))
     conftest = tests_dir / "conftest.py"
-    conftest.write_text(CONFTEST_TEMPLATE)
+    _write_if_absent(conftest, CONFTEST_TEMPLATE)
     return [example, conftest]
 
 
